@@ -11,13 +11,14 @@
                         <img src="{{ $comic->thumb }}" alt="{{ $comic->title }}">
                         <div class="card-body">
                             <h2 class="card-title">
-                                <a class="nav-link" href="{{ route('comics.show', $comic->id) }}">{{ $comic->title }}</a></h2>
+                                <a class="text-decoration-none" href="{{ route('comics.show', $comic->id) }}">{{ $comic->title }}</a>
+                            </h2>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
         {{ $comics->links() }}
-        <h3><a class="nav-link" href="{{ route('home') }}">Home</a></h3>
+        <h3 class="my-4"><a class="text-decoration-none" href="{{ route('home') }}">Home</a></h3>
     </div>
 @endsection

@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="container py-5 text-center">
-            <h3><a class="nav-link" href="{{ route('comics.index') }}">Comics List</a></h3>
+            <h3 class="my-4"><a class="text-decoration-none" href="{{ route('comics.index') }}">Comics List</a></h3>
         </div>
     </div>
 @endsection
