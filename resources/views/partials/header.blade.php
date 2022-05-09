@@ -1,6 +1,6 @@
 <header>
     <div class="container-fluid">
-        <ul class="nav nav-tabs justify-content-center">
+        <ul class="nav nav-tabs justify-content-center py-2">
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('blankPage') }}">CHARACTERS</a>
             </li>
