@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Comic;
 use Illuminate\Http\Request;
+use Faker\Generator as Faker;
 
 class ComicController extends Controller
 {
@@ -35,9 +36,36 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Faker $faker)
     {
         $data = $request->all();
+
+        // if during the insertion some data is missing, it is possible to generate a random value with the following lines
+        // -----------------------------------------------------------------------------------------------------------------
+        // if ($data['title'] == null) {
+        //     $data['title'] = $faker->words(5, true);
+        // }
+        // if ($data['description'] == null) {
+        //     $data['description'] = $faker->sentence(7);
+        // }
+        // if ($data['thumb'] == null) {
+        //     $data['thumb'] = $faker->imageUrl(192, 291);
+        // }
+        // if ($data['price'] == null) {
+        //     $data['price'] = '0.00';
+        // }
+        // if ($data['series'] == null) {
+        //     $data['series'] = $faker->words(3, true);
+        // }
+        // if ($data['sale_date'] == null) {
+        //     $data['sale_date'] = date("Y-m-d");
+        // }
+        // if ($data['type'] == null) {
+        //     $data['type'] = $faker->words(2, true);
+        // }
+        // -----------------------------------------------------------------------------------------------------------------
+        // dd($data);
+
 
         $newComic = Comic::create($data);
 
