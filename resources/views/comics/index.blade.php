@@ -19,6 +19,7 @@
             @endforeach
         </div>
         {{ $comics->links() }}
+        <h3 class="my-4"><a class="text-decoration-none" href="{{ route('comics.create') }}">Add new comic</a></h3>
         <h3 class="my-4"><a class="text-decoration-none" href="{{ route('home') }}">Home</a></h3>
     </div>
 @endsection
