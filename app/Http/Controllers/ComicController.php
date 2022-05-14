@@ -8,6 +8,17 @@ use Faker\Generator as Faker;
 
 class ComicController extends Controller
 {
+
+    protected $validationRules = [
+        'title'             => 'required|unique:comics|min:1|max:100',
+        'description'       => 'required|min:1|max:1000',
+        'thumb'             => 'required|url|max:1000',
+        'price'             => 'required|numeric',
+        'series'            => 'required|min:1|max:100',
+        'sale_date'         => 'required|date',
+        'type'              => 'required|min:1|max:50'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +49,9 @@ class ComicController extends Controller
      */
     public function store(Request $request, Faker $faker)
     {
+
+        $request->validate($this->validationRules);
+
         $data = $request->all();
 
         // if during the insertion some data is missing, it is possible to generate a random value with the following lines
@@ -94,7 +108,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
@@ -106,7 +120,15 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $this->validationRules['title'] = 'required|min:1|max:100';
+
+        $request->validate($this->validationRules);
+
+        $formData = $request->all();
+
+        $comic->update($formData);
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
@@ -117,6 +139,8 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }

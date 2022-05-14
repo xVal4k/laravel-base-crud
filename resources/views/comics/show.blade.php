@@ -17,6 +17,8 @@
                         <div class="col"><strong>Type:</strong> {{ $comic->type }}</div>
                     </div>
                 </div>
+                <h4 class="my-4"><a class="text-decoration-none" href="{{ route('comics.edit', $comic->id) }}">Edit</a></h4>
+
             </div>
         </div>
         <div class="container py-5 text-center">
